@@ -17,6 +17,30 @@ export class SlideshowComponent implements OnInit {
       duration: 15000
     },
     {
+      url: 'assets/gifs/2.gif',
+      type: 'gif',
+      backgroundColor: 'black',
+      duration: 15000
+    },
+    {
+      url: 'assets/gifs/3.gif',
+      type: 'gif',
+      backgroundColor: '#FAFAFA',
+      duration: 15000
+    },
+    {
+      url: 'assets/gifs/4.gif',
+      type: 'gif',
+      backgroundColor: '#FAE9D4',
+      duration: 15000
+    },
+    {
+      url: 'assets/gifs/5.gif',
+      type: 'gif',
+      backgroundColor: 'black',
+      duration: 15000
+    },
+    {
       url: 'assets/videos/generative-1.mp4',
       type: 'video',
       backgroundColor: 'black',
@@ -46,15 +70,9 @@ export class SlideshowComponent implements OnInit {
       speed: .5
     },
     {
-      url: 'assets/videos/generative-8.mp4',
-      type: 'video',
-      backgroundColor: 'black',
-      speed: .5
-    },
-    {
       url: 'assets/videos/generative-9.mp4',
       type: 'video',
-      backgroundColor: 'white',
+      backgroundColor: '#F8F6FA',
       speed: .33
     },
     {
@@ -108,7 +126,12 @@ export class SlideshowComponent implements OnInit {
     if (this.timer) {
       clearTimeout(this.timer);
     }
-    this.currentIndex = (this.currentIndex + 1) % this.mediaItems.length;
+    let nextIndex;
+    do {
+      nextIndex = Math.floor(Math.random() * this.mediaItems.length);
+    } while (nextIndex === this.currentIndex && this.mediaItems.length > 1);
+
+    this.currentIndex = nextIndex;
     this.loadCurrentMedia();
   }
 
