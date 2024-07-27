@@ -1,0 +1,13 @@
+<div class="slideshow-container" [style.background-color]="currentItem.backgroundColor">
+    <ng-container [ngSwitch]="currentItem.type">
+      <video #mediaElement *ngSwitchCase="'video'"
+             (ended)="onMediaEnded()" 
+             autoplay muted playsinline>
+        <source [src]="currentItem.url" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <img #mediaElement *ngSwitchCase="'gif'"
+           [src]="currentItem.url" 
+           alt="GIF">
+    </ng-container>
+  </div>
